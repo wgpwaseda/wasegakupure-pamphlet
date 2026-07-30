@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わせがくPURE高等学校 早稲田キャンパス</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>わせがくPURE高等学校 早稲田キャンパス</h1>
+  <p>デジタルパンフレット</p>
+
+<div id="book">
+  <button id="leftArea" onclick="previousPage()" aria-label="前のページへ"></button>
+
+  <img
+    id="leftPage"
+    src="assets/images/page-01.jpg"
+    alt="パンフレット左ページ"
+  >
+
+  <img
+    id="rightPage"
+    src=""
+    alt="パンフレット右ページ"
+  >
+
+  <button id="rightArea" onclick="nextPage()" aria-label="次のページへ"></button>
+</div>
+
+<div class="controls">
+  <button id="previousButton" onclick="previousPage()">前へ</button>
+
+  <span id="pageNumber">1 / 6</span>
+
+  <button id="nextButton" onclick="nextPage()">次へ</button>
+</div>
+  <script src="script.js"></script>
+
+</body>
+</html>

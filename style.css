@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  padding: 20px;
+  background: #f5f5f5;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+#pageImage {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 75vh;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+div {
+  margin-top: 16px;
+}
+
+button {
+  padding: 10px 24px;
+  border: none;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#pageNumber {
+  display: inline-block;
+  min-width: 70px;
+  margin: 0 12px;
+  font-weight: bold;
+}
+#book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#leftPage,
+#rightPage {
+  display: block;
+  width: auto;
+  max-width: 45%;
+  max-height: 72vh;
+  margin: 0;
+  object-fit: contain;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+#leftPage {
+  border-right: 1px solid #ddd;
+}
+
+@media (max-width: 700px) {
+  #book {
+    display: block;
+  }
+
+  #leftPage,
+  #rightPage {
+    max-width: 100%;
+    max-height: 72vh;
+    margin: 0 auto;
+  }
+
+  #rightPage {
+    display: none !important;
+  }
+}
+#book {
+  position: relative;
+}
+
+#leftPage {
+  box-shadow:
+    -8px 10px 24px rgba(0, 0, 0, 0.12),
+    inset -8px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+#rightPage {
+  box-shadow:
+    8px 10px 24px rgba(0, 0, 0, 0.12),
+    inset 8px 0 10px rgba(0, 0, 0, 0.05);
+}
+#book {
+  position: relative;
+}
+
+#leftArea,
+#rightArea {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 25%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#leftArea {
+  left: 0;
+}
+
+#rightArea {
+  right: 0;
+}
+
+#leftArea:hover,
+#rightArea:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+#leftArea::after,
+#rightArea::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+#leftArea::after {
+  content: "‹";
+  left: 18px;
+}
+
+#rightArea::after {
+  content: "›";
+  right: 18px;
+}
+
+#leftArea:hover::after,
+#rightArea:hover::after {
+  opacity: 1;
+}
