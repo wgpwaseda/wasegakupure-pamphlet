@@ -289,3 +289,8 @@ p {
     font-size: 14px;
   }
 }
+#leftPage,
+#rightPage {
+  flex-shrink: 0;
+  height: auto;
+}
