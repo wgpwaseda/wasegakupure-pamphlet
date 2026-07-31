@@ -140,42 +140,53 @@ window.addEventListener("resize", function() {
   showPage();
 });
 
-function applyZoom() {
-  const leftPage = document.getElementById("leftPage");
-  const rightPage = document.getElementById("rightPage");
-  const book = document.getElementById("book");
+function openZoomModal(imageSrc) {
+  const zoomModal = document.getElementById("zoomModal");
+  const zoomImage = document.getElementById("zoomImage");
 
-  leftPage.style.width = "";
-  rightPage.style.width = "";
-  leftPage.style.maxWidth = "";
-  rightPage.style.maxWidth = "";
-
-  leftPage.style.transform = `scale(${zoomLevel})`;
-  rightPage.style.transform = `scale(${zoomLevel})`;
-
-  leftPage.style.transformOrigin = "center center";
-  rightPage.style.transformOrigin = "center center";
-
-  book.style.overflow = zoomLevel > 1 ? "auto" : "hidden";
+  zoomImage.src = imageSrc;
+  zoomModal.classList.add("is-open");
+  document.body.style.overflow = "hidden";
 }
 
-  leftPage.style.transform = "none";
-  rightPage.style.transform = "none";
+function closeZoomModal() {
+  const zoomModal = document.getElementById("zoomModal");
+  const zoomImage = document.getElementById("zoomImage");
 
-  book.style.justifyContent = zoomLevel > 1 ? "flex-start" : "center";
-  book.style.overflow = zoomLevel > 1 ? "auto" : "hidden";
+  zoomModal.classList.remove("is-open");
+  zoomImage.src = "";
+  document.body.style.overflow = "";
 }
 
 function zoomIn() {
-  if (zoomLevel < 2.5) {
-    zoomLevel += 0.25;
-    applyZoom();
-  }
+  const leftPage = document.getElementById("leftPage");
+  openZoomModal(leftPage.src);
 }
 
 function zoomOut() {
-  if (zoomLevel > 1) {
-    zoomLevel -= 0.25;
-    applyZoom();
-  }
+  closeZoomModal();
 }
+
+document.getElementById("leftPage").addEventListener("click", function() {
+  openZoomModal(this.src);
+});
+
+document.getElementById("rightPage").addEventListener("click", function() {
+  if (this.src && this.style.display !== "none") {
+    openZoomModal(this.src);
+  }
+});
+
+document.getElementById("zoomModal").addEventListener("click", function(event) {
+  if (event.target === this) {
+    closeZoomModal();
+  }
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeZoomModal();
+  }
+});
+
+showPage();
