@@ -92,27 +92,49 @@ document.addEventListener("keydown", function(event) {
 });
 
 let touchStartX = 0;
-let touchEndX = 0;
+let isPinching = false;
 
 const book = document.getElementById("book");
 
 book.addEventListener("touchstart", function(event) {
-  touchStartX = event.changedTouches[0].clientX;
-});
+  if (event.touches.length >= 2) {
+    isPinching = true;
+    return;
+  }
+
+  isPinching = false;
+  touchStartX = event.touches[0].clientX;
+}, { passive: true });
+
+book.addEventListener("touchmove", function(event) {
+  if (event.touches.length >= 2) {
+    isPinching = true;
+  }
+}, { passive: true });
 
 book.addEventListener("touchend", function(event) {
-  touchEndX = event.changedTouches[0].clientX;
+  if (isPinching) {
+    if (event.touches.length === 0) {
+      isPinching = false;
+    }
+    return;
+  }
 
+  if (event.changedTouches.length === 0) {
+    return;
+  }
+
+  const touchEndX = event.changedTouches[0].clientX;
   const swipeDistance = touchEndX - touchStartX;
 
-  if (swipeDistance < -50) {
+  if (swipeDistance < -70) {
     nextPage();
   }
 
-  if (swipeDistance > 50) {
+  if (swipeDistance > 70) {
     previousPage();
   }
-});
+}, { passive: true });
 
 window.addEventListener("resize", function() {
   showPage();
