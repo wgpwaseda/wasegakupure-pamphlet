@@ -40,6 +40,25 @@
 
   <button id="nextButton" onclick="nextPage()">次へ</button>
 </div>
+  <div id="zoomModal" class="zoom-modal">
+  <button
+    id="zoomCloseButton"
+    class="zoom-close"
+    onclick="closeZoomModal()"
+    aria-label="拡大画面を閉じる"
+  >
+    ×
+  </button>
+
+  <div class="zoom-image-wrap">
+    <img
+      id="zoomImage"
+      src=""
+      alt="パンフレット拡大画像"
+    >
+  </div>
+</div>
+  
   <script src="script.js"></script>
 
 </body>
