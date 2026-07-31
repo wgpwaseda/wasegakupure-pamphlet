@@ -140,20 +140,26 @@ window.addEventListener("resize", function() {
   showPage();
 });
 
-showPage();
-let zoomLevel = 1;
-
 function applyZoom() {
   const leftPage = document.getElementById("leftPage");
   const rightPage = document.getElementById("rightPage");
   const book = document.getElementById("book");
 
-  leftPage.style.transform = `scale(${zoomLevel})`;
-  rightPage.style.transform = `scale(${zoomLevel})`;
+  if (isMobileView()) {
+    leftPage.style.width = `${100 * zoomLevel}%`;
+    leftPage.style.maxWidth = "none";
+  } else {
+    leftPage.style.width = `${45 * zoomLevel}%`;
+    leftPage.style.maxWidth = "none";
 
-  leftPage.style.transformOrigin = "center center";
-  rightPage.style.transformOrigin = "center center";
+    rightPage.style.width = `${45 * zoomLevel}%`;
+    rightPage.style.maxWidth = "none";
+  }
 
+  leftPage.style.transform = "none";
+  rightPage.style.transform = "none";
+
+  book.style.justifyContent = zoomLevel > 1 ? "flex-start" : "center";
   book.style.overflow = zoomLevel > 1 ? "auto" : "hidden";
 }
 
