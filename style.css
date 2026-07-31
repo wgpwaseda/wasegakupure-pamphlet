@@ -69,7 +69,7 @@ p {
   margin: 0 auto;
   padding: 28px;
   overflow: hidden;
-  touch-action: pan-y pinch-zoom;
+　touch-action: pan-x pan-y pinch-zoom;
 
   background:
     linear-gradient(
