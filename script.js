@@ -145,16 +145,19 @@ function applyZoom() {
   const rightPage = document.getElementById("rightPage");
   const book = document.getElementById("book");
 
-  if (isMobileView()) {
-    leftPage.style.width = `${100 * zoomLevel}%`;
-    leftPage.style.maxWidth = "none";
-  } else {
-    leftPage.style.width = `${45 * zoomLevel}%`;
-    leftPage.style.maxWidth = "none";
+  leftPage.style.width = "";
+  rightPage.style.width = "";
+  leftPage.style.maxWidth = "";
+  rightPage.style.maxWidth = "";
 
-    rightPage.style.width = `${45 * zoomLevel}%`;
-    rightPage.style.maxWidth = "none";
-  }
+  leftPage.style.transform = `scale(${zoomLevel})`;
+  rightPage.style.transform = `scale(${zoomLevel})`;
+
+  leftPage.style.transformOrigin = "center center";
+  rightPage.style.transformOrigin = "center center";
+
+  book.style.overflow = zoomLevel > 1 ? "auto" : "hidden";
+}
 
   leftPage.style.transform = "none";
   rightPage.style.transform = "none";
