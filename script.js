@@ -141,3 +141,32 @@ window.addEventListener("resize", function() {
 });
 
 showPage();
+let zoomLevel = 1;
+
+function applyZoom() {
+  const leftPage = document.getElementById("leftPage");
+  const rightPage = document.getElementById("rightPage");
+  const book = document.getElementById("book");
+
+  leftPage.style.transform = `scale(${zoomLevel})`;
+  rightPage.style.transform = `scale(${zoomLevel})`;
+
+  leftPage.style.transformOrigin = "center center";
+  rightPage.style.transformOrigin = "center center";
+
+  book.style.overflow = zoomLevel > 1 ? "auto" : "hidden";
+}
+
+function zoomIn() {
+  if (zoomLevel < 2.5) {
+    zoomLevel += 0.25;
+    applyZoom();
+  }
+}
+
+function zoomOut() {
+  if (zoomLevel > 1) {
+    zoomLevel -= 0.25;
+    applyZoom();
+  }
+}
