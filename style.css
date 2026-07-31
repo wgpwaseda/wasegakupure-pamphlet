@@ -161,3 +161,20 @@ button:hover {
 #rightArea:hover::after {
   opacity: 1;
 }
+#book {
+  width: min(1100px, 100%);
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  box-shadow:
+    0 24px 60px rgba(46, 56, 76, 0.14),
+    0 4px 14px rgba(46, 56, 76, 0.08);
+}
+
+@media (max-width: 700px) {
+  #book {
+    padding: 10px;
+    border-radius: 16px;
+  }
+}
