@@ -178,3 +178,11 @@ button:hover {
     border-radius: 16px;
   }
 }
+#book {
+  background: linear-gradient(
+    135deg,
+    rgba(226, 239, 248, 0.98),
+    rgba(250, 231, 238, 0.98)
+  );
+  border: 1px solid rgba(110, 130, 150, 0.22);
+}
